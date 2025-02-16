@@ -1,0 +1,329 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "requestId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "approver",
+        "type": "address"
+      }
+    ],
+    "name": "Approved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum IWeb3ite.OwnershipType",
+        "name": "oldType",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum IWeb3ite.OwnershipType",
+        "name": "newType",
+        "type": "uint8"
+      }
+    ],
+    "name": "OwnershipChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum IWeb3ite.OwnershipType",
+        "name": "ownershipType",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "updateFee",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "imt",
+        "type": "bool"
+      }
+    ],
+    "name": "PageCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "PageFeesWithdrawn",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "winner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "PageTreasuryDistributed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "requestId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "newHtml",
+        "type": "string"
+      }
+    ],
+    "name": "UpdateExecuted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "requestId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "requester",
+        "type": "address"
+      }
+    ],
+    "name": "UpdateRequested",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_requestId", "type": "uint256" }
+    ],
+    "name": "approveRequest",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" },
+      {
+        "internalType": "enum IWeb3ite.OwnershipType",
+        "name": "_newOwnershipType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_newMultiSigOwners",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_newMultiSigThreshold",
+        "type": "uint256"
+      }
+    ],
+    "name": "changeOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_initialHtml", "type": "string" },
+      {
+        "internalType": "enum IWeb3ite.OwnershipType",
+        "name": "_ownershipType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_multiSigOwners",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_multiSigThreshold",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "_updateFee", "type": "uint256" },
+      { "internalType": "bool", "name": "_imt", "type": "bool" }
+    ],
+    "name": "createPage",
+    "outputs": [
+      { "internalType": "uint256", "name": "pageId", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" }
+    ],
+    "name": "distributePageTreasury",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" }
+    ],
+    "name": "getCurrentHtml",
+    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" }
+    ],
+    "name": "getPageOwners",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_requestId", "type": "uint256" }
+    ],
+    "name": "getUpdateRequest",
+    "outputs": [
+      { "internalType": "string", "name": "newHtml", "type": "string" },
+      { "internalType": "bool", "name": "executed", "type": "bool" },
+      { "internalType": "uint256", "name": "approvalCount", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" }
+    ],
+    "name": "pageBalances",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pageCount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" },
+      { "internalType": "string", "name": "_newHtml", "type": "string" }
+    ],
+    "name": "requestUpdate",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pageId", "type": "uint256" }
+    ],
+    "name": "withdrawPageFees",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Web3ite
+    network: optimism-sepolia
+    source:
+      address: "0xac05e7242235230667F73A464ED197D5B6060844"
+      abi: Web3ite
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approved
+        - OwnershipChanged
+        - PageCreated
+        - PageFeesWithdrawn
+        - PageTreasuryDistributed
+        - UpdateExecuted
+        - UpdateRequested
+      abis:
+        - name: Web3ite
+          file: ./abis/Web3ite.json
+      eventHandlers:
+        - event: Approved(indexed uint256,indexed uint256,indexed address)
+          handler: handleApproved
+        - event: OwnershipChanged(indexed uint256,uint8,uint8)
+          handler: handleOwnershipChanged
+        - event: PageCreated(indexed uint256,indexed address,uint8,uint256,bool)
+          handler: handlePageCreated
+        - event: PageFeesWithdrawn(indexed uint256,indexed address,uint256)
+          handler: handlePageFeesWithdrawn
+        - event: PageTreasuryDistributed(indexed uint256,indexed address,uint256)
+          handler: handlePageTreasuryDistributed
+        - event: UpdateExecuted(indexed uint256,indexed uint256,string)
+          handler: handleUpdateExecuted
+        - event: UpdateRequested(indexed uint256,indexed uint256,indexed address)
+          handler: handleUpdateRequested
+      file: ./src/web-3-ite.ts

@@ -1,0 +1,71 @@
+type Approved @entity(immutable: true) {
+  id: Bytes!
+  pageId: BigInt! # uint256
+  requestId: BigInt! # uint256
+  approver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipChanged @entity(immutable: true) {
+  id: Bytes!
+  pageId: BigInt! # uint256
+  oldType: Int! # uint8
+  newType: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PageCreated @entity(immutable: true) {
+  id: Bytes!
+  pageId: BigInt! # uint256
+  creator: Bytes! # address
+  ownershipType: Int! # uint8
+  updateFee: BigInt! # uint256
+  imt: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PageFeesWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  pageId: BigInt! # uint256
+  receiver: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PageTreasuryDistributed @entity(immutable: true) {
+  id: Bytes!
+  pageId: BigInt! # uint256
+  winner: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UpdateExecuted @entity(immutable: true) {
+  id: Bytes!
+  pageId: BigInt! # uint256
+  requestId: BigInt! # uint256
+  newHtml: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UpdateRequested @entity(immutable: true) {
+  id: Bytes!
+  pageId: BigInt! # uint256
+  requestId: BigInt! # uint256
+  requester: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
