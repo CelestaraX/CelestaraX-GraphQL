@@ -18,5 +18,7 @@ graph build
 ```
 4. Deploy the subgraph:
 ```
-graph deploy \ --node [Your node port] \ [subgraph name]
+graph deploy \
+  --node [Your node port] \
+  [subgraph name]
 ```
